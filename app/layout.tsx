@@ -19,9 +19,9 @@ export const metadata: Metadata = {
       "We design and develop high-performance web and mobile applications for startups and businesses worldwide.",
     type: "website",
   },
-  icons: {
-    icon: "/favicon.ico",
-  },
+ icons: {
+  icon: "https://www.zapsolutionz.com/ZAP%20WMS%20R.png",
+}
 };
 
 export const viewport: Viewport = {

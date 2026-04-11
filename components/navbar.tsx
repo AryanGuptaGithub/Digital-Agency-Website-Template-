@@ -40,11 +40,11 @@ export default function Navbar() {
         initial={false}
         animate={{ opacity: visible ? 1 : 0, y: visible ? 0 : -20 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
-        className="fixed top-0 left-0 right-0 z-50 bg-black/30 backdrop-blur-xl border-b border-white/[0.05]"
+        className="fixed border-2 top-0 left-0 right-0 z-50   border-b border-white/[0.05]"
         style={{ pointerEvents: visible ? "auto" : "none" }}
       >
         <div className="mx-auto flex max-w-[1400px] items-center justify-between px-6 py-6 lg:px-12">
-            ZAP
+           <img src="https://www.zapsolutionz.com/ZAP%20WMS%20R.png" alt="ZapLogo"  className="w-20"/>
           <div />
 
           {/* Desktop links */}
@@ -59,7 +59,7 @@ export default function Navbar() {
     behavior: "smooth",
   });
 }}
-                className="group relative px-6 py-2 text-[11px] font-medium tracking-[0.25em] uppercase text-white/60 transition-colors duration-500 hover:text-white hover:tracking-[0.3em]"
+                className="group relative px-6 py-2 text-[11px] font-bold tracking-[0.25em] uppercase text-red-500 transition-colors duration-500 hover:text-red-700 hover:tracking-[0.3em]"
               >
                 {link.label}
                 <span className="absolute bottom-1 left-6 right-6 h-px origin-left scale-x-0 bg-gradient-to-r from-transparent via-white/60 to-transparent transition-transform duration-500 ease-out group-hover:scale-x-100" />
