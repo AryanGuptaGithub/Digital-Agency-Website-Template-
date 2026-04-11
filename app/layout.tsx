@@ -10,14 +10,17 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Armorray | Enterprise Hybrid PACS Platform",
+  title: "ZAP Agency | Web & Mobile Development Studio",
   description:
-    "Premium Hybrid PACS for medical imaging. View diagnostic-quality images on any device. Vendor-neutral archives. Impacting 37M+ lives across 105+ countries.",
+    "We build modern web and mobile applications that scale. From idea to launch — your digital product partner.",
   openGraph: {
-    title: "Armorray | Enterprise Hybrid PACS Platform",
+    title: "ZAP Agency | Web & Mobile Development Studio",
     description:
-      "Data, detail, and diagnosis. Enterprise-grade hybrid PACS trusted by radiology centers, hospitals, and clinics worldwide.",
+      "We design and develop high-performance web and mobile applications for startups and businesses worldwide.",
     type: "website",
+  },
+  icons: {
+    icon: "/favicon.ico",
   },
 };
 
@@ -34,8 +37,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        {/* Favicon (extra fallback for safety) */}
+        <link rel="icon" href="/favicon.ico" />
+      </head>
       <body
-        className={`${inter.variable} font-sans antialiased`}
+        className={`${inter.variable} font-sans antialiased bg-[#050505] text-white`}
       >
         {children}
         <Analytics />
