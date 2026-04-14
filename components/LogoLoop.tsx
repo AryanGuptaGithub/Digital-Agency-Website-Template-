@@ -17,7 +17,7 @@ export interface LogoItem {
 export interface LogoLoopProps {
   logos: LogoItem[];
   speed?: number; // Duration in seconds
-  direction?: "left" | "right";
+  direction?: "left" | "right" | "up" | "down";
   logoHeight?: number;
   gap?: number;
   pauseOnHover?: boolean;
