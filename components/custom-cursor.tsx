@@ -26,16 +26,17 @@ export default function CustomCursor() {
     const handleMouseEnter = () => setIsVisible(true);
 
     const handleElementHover = (e: MouseEvent) => {
-      const target = e.target as HTMLElement;
-      const isInteractive =
-        target.tagName === "A" ||
-        target.tagName === "BUTTON" ||
-        target.closest("a") ||
-        target.closest("button") ||
-        target.getAttribute("role") === "button";
+  const target = e.target as HTMLElement;
+  const isInteractive = Boolean(
+    target.tagName === "A" ||
+    target.tagName === "BUTTON" ||
+    target.closest("a") ||
+    target.closest("button") ||
+    target.getAttribute("role") === "button"
+  );
 
-      setIsPointer(isInteractive);
-    };
+  setIsPointer(isInteractive);
+};
 
     window.addEventListener("mousemove", handleMouseMove);
     window.addEventListener("mouseleave", handleMouseLeave);
