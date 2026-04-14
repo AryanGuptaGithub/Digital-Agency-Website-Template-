@@ -1,3 +1,4 @@
+// horizontal-showcase.tsx
 "use client";
 
 import { useRef, useEffect, useState } from "react";
@@ -20,10 +21,10 @@ interface Project {
 const PROJECTS: Project[] = [
   {
     id: 1,
-    title: "Aether Finance",
-    category: "Web3 Platform",
+    title: "Cinecms",
+    category: "Media Managing Platform",
     year: "2024",
-    image: "/images/project-1.jpg",
+    image: "https://res.cloudinary.com/dxwoomfzw/image/upload/v1776152992/cinecms_dl9wvb.png",
     stats: [
       { label: "TVL", value: "$1.2B" },
       { label: "Users", value: "250K+" },
@@ -31,10 +32,10 @@ const PROJECTS: Project[] = [
   },
   {
     id: 2,
-    title: "Nova Health",
-    category: "Telemedicine",
+    title: "Movement Creation",
+    category: "Media Managing Platform",
     year: "2024",
-    image: "/images/project-2.jpg",
+    image: "https://res.cloudinary.com/dxwoomfzw/image/upload/v1776152992/movementcreation_t8zepe.png",
     stats: [
       { label: "Consultations", value: "1M+" },
       { label: "Rating", value: "4.9" },
@@ -42,10 +43,10 @@ const PROJECTS: Project[] = [
   },
   {
     id: 3,
-    title: "Voyager AI",
-    category: "Analytics Suite",
+    title: "Tradingwala",
+    category: "Trading Stimulation",
     year: "2023",
-    image: "/images/project-3.jpg",
+    image: "https://res.cloudinary.com/dxwoomfzw/image/upload/v1776152994/tradingwala_olswqn.png",
     stats: [
       { label: "Data Points", value: "5B+" },
       { label: "Latency", value: "<50ms" },
@@ -53,10 +54,54 @@ const PROJECTS: Project[] = [
   },
   {
     id: 4,
-    title: "Luxe Escapes",
-    category: "Travel Platform",
+    title: "Samsom Orgo",
+    category: "Fertilizers Website",
     year: "2023",
-    image: "/images/project-4.jpg",
+    image: "https://res.cloudinary.com/dxwoomfzw/image/upload/v1776152994/samson-orgo_tq5iy1.png",
+    stats: [
+      { label: "Bookings", value: "$45M" },
+      { label: "Destinations", value: "80+" },
+    ],
+  },
+   {
+    id: 6,
+    title: "Quickscan",
+    category: "Appointment Booking Platform",
+    year: "2024",
+    image: "https://res.cloudinary.com/dxwoomfzw/image/upload/v1776152992/quickscan_epd5xc.png",
+    stats: [
+      { label: "TVL", value: "$1.2B" },
+      { label: "Users", value: "250K+" },
+    ],
+  },
+  {
+    id: 7,
+    title: "Instapeel",
+    category: "Beauty E-commerce",
+    year: "2024",
+    image: "https://res.cloudinary.com/dxwoomfzw/image/upload/v1776152992/instapeels_jorkvk.png",
+    stats: [
+      { label: "Consultations", value: "1M+" },
+      { label: "Rating", value: "4.9" },
+    ],
+  },
+  {
+    id: 8,
+    title: "Society CRM",
+    category: "Trading Stimulation",
+    year: "2023",
+    image: "https://res.cloudinary.com/dxwoomfzw/image/upload/v1776152991/admin_healthcare_asia_zme062.png",
+    stats: [
+      { label: "Data Points", value: "5B+" },
+      { label: "Latency", value: "<50ms" },
+    ],
+  },
+  {
+    id: 9,
+    title: "HealthcareCambodia CRM",
+    category: "Fertilizers Website",
+    year: "2023",
+    image: "https://res.cloudinary.com/dxwoomfzw/image/upload/v1776152991/Healthcare_Asia_d0o7dh.png",
     stats: [
       { label: "Bookings", value: "$45M" },
       { label: "Destinations", value: "80+" },

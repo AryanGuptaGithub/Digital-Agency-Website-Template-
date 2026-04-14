@@ -13,6 +13,8 @@ import ProcessScroll from "@/components/process-scroll";
 import LogoLoop from "@/components/LogoLoop";
 import { techLogos } from "@/lib/logos";
 import MagicBento from '@/components/MagicBento'
+import FeaturesGrid from "@/components/features-grid";
+import ProjectShowcase from "@/components/project-showcase";
 
 
 
@@ -47,8 +49,8 @@ export default function Home() {
        
 
 
-         <HorizontalShowcase /> 
-         <MagicBento 
+        
+         {/* <MagicBento 
   textAutoHide={true}
   enableStars
   enableSpotlight
@@ -60,10 +62,13 @@ export default function Home() {
   particleCount={12}
   glowColor="132, 0, 255"
   disableAnimations={false}
-/>
+/> */}
            
         {/* <YachtMorph /> */}
         <Experience />
+         <FeaturesGrid />  
+          {/* <HorizontalShowcase />  */}
+         <ProjectShowcase />
         <Globe />
         <Charter />
       </main>
