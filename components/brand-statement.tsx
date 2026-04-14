@@ -93,15 +93,15 @@ export default function BrandStatement() {
 
       <div className="mx-auto max-w-7xl">
         {/* Full-width cinematic image with text overlaid */}
-        <motion.div 
-        whileHover={{ scale: 1.03 }}
+        <motion.div
+          whileHover={{ scale: 1.03 }}
           {...fadeUp}
           transition={{ duration: 1.2, ease: "easeOut" }}
           className="relative mb-20 aspect-[21/9] w-full overflow-hidden md:mb-28"
         >
           <motion.div style={{ scale: imgScale, opacity: imgOpacity }} className="absolute inset-0" whileHover={{ scale: 1.03 }}>
             <Image
-              src="images/comp-setup.jpg"
+              src="/images/comp-setup.jpg"
               alt="Computer Setup"
               fill
               className="object-cover"
@@ -143,8 +143,8 @@ export default function BrandStatement() {
               transition={{ duration: 1, ease: "easeOut", delay: 0.1 }}
               className="mb-6 text-lg leading-relaxed text-white/60 md:text-xl"
             >
-           We craft scalable web and mobile applications that solve real-world problems. 
-From startups to enterprises, we turn ideas into powerful digital products.
+              We craft scalable web and mobile applications that solve real-world problems.
+              From startups to enterprises, we turn ideas into powerful digital products.
             </motion.p>
 
             <motion.p
@@ -152,8 +152,8 @@ From startups to enterprises, we turn ideas into powerful digital products.
               transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
               className="text-lg leading-relaxed text-white/60 md:text-xl"
             >
-              From intuitive UI/UX design to high-performance backend systems, 
-we build solutions that are fast, reliable, and future-ready.
+              From intuitive UI/UX design to high-performance backend systems,
+              we build solutions that are fast, reliable, and future-ready.
             </motion.p>
           </div>
 
@@ -165,10 +165,10 @@ we build solutions that are fast, reliable, and future-ready.
             whileHover={{ scale: 1.03 }}
           >
             {[
-  { value: 50, suffix: "+", label: "Projects Delivered" },
-  { value: 20, suffix: "+", label: "Happy Clients" },
-  { value: 3, suffix: "+", label: "Years Experience" },
-].map((stat) => (
+              { value: 50, suffix: "+", label: "Projects Delivered" },
+              { value: 20, suffix: "+", label: "Happy Clients" },
+              { value: 3, suffix: "+", label: "Years Experience" },
+            ].map((stat) => (
               <div key={stat.label} className="flex flex-col">
                 <span className="text-3xl font-bold tabular-nums text-white md:text-4xl">
                   <AnimatedNumber target={stat.value} suffix={stat.suffix} />

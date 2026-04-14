@@ -33,7 +33,7 @@ export default function Charter() {
 
   return (
     <section id="contact" className="relative overflow-hidden">
-      {/* Full-width video background */}
+     {/* Full-width video background */}
 <div className="absolute inset-0">
   <video
     autoPlay
@@ -52,8 +52,8 @@ export default function Charter() {
     />
   </video>
   {/* Overlay gradients remain unchanged */}
-  <div className="absolute inset-0 bg-black/70" />
-  <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-black/80" />
+  <div className="absolute inset-0 bg-black/50" />
+  {/* <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-black/80" /> */}
   <div className="absolute inset-x-0 top-0 h-48 bg-gradient-to-b from-[#0D1318] to-transparent" />
   <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-[#111111] to-transparent" />
 </div>
@@ -201,9 +201,9 @@ From concept to launch, we’ve got you covered.
                     e.preventDefault();
                     setSubmitted(true);
                   }}
-                 className=" border-white/[0.08] bg-white/[0.03] backdrop-blur-2xl shadow-[0_0_40px_rgba(255,255,255,0.05)]"
+                 className=" border-white/[0.08] bg-white/[0.03] backdrop-blur-2xl shadow-[0_0_40px_rgba(255,255,255,0.05)] p-5 rounded-md"
                 >
-                  <h3 className="mb-8 text-lg font-semibold tracking-tight text-white">
+                  <h3 className="mb-8 text-lg font-semibold tracking-tight text-white border-b pt-5 pb-3 pl-5">
                     Request a Demo
                   </h3>
 
@@ -217,7 +217,7 @@ From concept to launch, we’ve got you covered.
                           onChange={handleChange}
                           value={formState[field.name] || ""}
                           placeholder=" "
-                          className="peer w-full border-b border-white/[0.1] bg-transparent pb-2 pt-5 text-sm font-medium text-white outline-none transition-all duration-500 placeholder:text-transparent focus:border-white/30"
+                          className="peer w-full  border-b border-white/[0.1] bg-transparent pb-2 pt-5 text-sm font-medium text-white outline-none transition-all duration-500 placeholder:text-transparent focus:border-white/30"
                         />
                         <label className="pointer-events-none absolute left-0 top-0 text-[10px] font-semibold tracking-[0.2em] uppercase text-white/25 transition-all duration-300 peer-placeholder-shown:top-5 peer-placeholder-shown:text-sm peer-placeholder-shown:font-normal peer-placeholder-shown:tracking-normal peer-placeholder-shown:text-white/20 peer-focus:top-0 peer-focus:text-[10px] peer-focus:font-semibold peer-focus:tracking-[0.2em] peer-focus:text-white/50">
                           {field.label}
@@ -232,7 +232,7 @@ From concept to launch, we’ve got you covered.
                         onChange={handleChange}
                         value={formState.message || ""}
                         placeholder=" "
-                        className="peer w-full resize-none border-b border-white/[0.1] bg-transparent pb-2 pt-5 text-sm font-medium text-white outline-none transition-all duration-500 placeholder:text-transparent focus:border-white/30"
+                        className="peer w-full  resize-none border-b border-white/[0.1] bg-transparent pb-2 pt-5 text-sm font-medium text-white outline-none transition-all duration-500 placeholder:text-transparent focus:border-white/30"
                       />
                       <label className="pointer-events-none absolute left-0 top-0 text-[10px] font-semibold tracking-[0.2em] uppercase text-white/25 transition-all duration-300 peer-placeholder-shown:top-5 peer-placeholder-shown:text-sm peer-placeholder-shown:font-normal peer-placeholder-shown:tracking-normal peer-placeholder-shown:text-white/20 peer-focus:top-0 peer-focus:text-[10px] peer-focus:font-semibold peer-focus:tracking-[0.2em] peer-focus:text-white/50">
                         Message

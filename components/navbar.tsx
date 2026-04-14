@@ -59,7 +59,7 @@ export default function Navbar() {
     behavior: "smooth",
   });
 }}
-                className="group relative px-6 py-2 text-[11px] font-bold tracking-[0.25em] uppercase text-red-500 transition-colors duration-500 hover:text-red-700 hover:tracking-[0.3em]"
+                className="group relative px-6 py-2 text-[11px] font-bold tracking-[0.25em] uppercase  transition-colors duration-500 hover:text-red-700 hover:tracking-[0.3em]"
               >
                 {link.label}
                 <span className="absolute bottom-1 left-6 right-6 h-px origin-left scale-x-0 bg-gradient-to-r from-transparent via-white/60 to-transparent transition-transform duration-500 ease-out group-hover:scale-x-100" />

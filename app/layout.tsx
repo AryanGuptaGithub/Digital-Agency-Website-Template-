@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
+import CustomCursor from "@/components/custom-cursor";
 import "./globals.css";
 
 const inter = Inter({
@@ -44,6 +45,7 @@ export default function RootLayout({
       <body
         className={`${inter.variable} font-sans antialiased bg-[#050505] text-white`}
       >
+        <CustomCursor />
         {children}
         <Analytics />
       </body>

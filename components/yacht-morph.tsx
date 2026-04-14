@@ -5,10 +5,10 @@ import { useRef, useEffect, useState, useCallback } from "react";
 
 const FRAME_START = 2000;
 const FRAME_END = 2222;
-const TOTAL_FRAMES = FRAME_END - FRAME_START + 1;
+const TOTAL_FRAMES = 192;
 
 function framePath(index: number) {
-  return `/sequence-2/sequence-${FRAME_START + index}.jpg`;
+  return `/frames-1/frame_${String(index + 1).padStart(4, "0")}.jpg`;
 }
 
 interface TextOverlay {

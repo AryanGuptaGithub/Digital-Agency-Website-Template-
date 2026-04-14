@@ -1,3 +1,4 @@
+// hero-scroll.tsx
 "use client";
 
 import { useRef, useEffect, useState, useCallback } from "react";
@@ -5,13 +6,16 @@ import { motion } from "framer-motion";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-// Register GSAP plugin
 gsap.registerPlugin(ScrollTrigger);
 
 // ==================== CONFIGURATION ====================
 const FRAME_START = 1;
-const FRAME_END = 96;
+const FRAME_END = 192;
 const TOTAL_FRAMES = FRAME_END - FRAME_START + 1;
+
+const CLOUD_NAME = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
+const FOLDER = "armorray/frames-1";
+const PRELOAD_AHEAD = 40;
 
 function formatFrameNumber(num: number): string {
   return num.toString().padStart(4, "0");
@@ -19,19 +23,19 @@ function formatFrameNumber(num: number): string {
 
 function frameSrc(index: number): string {
   const frameNum = FRAME_START + index;
-  return `/frames-1/frame_${formatFrameNumber(frameNum)}.png`;
+  const publicId = `${FOLDER}/frame_${formatFrameNumber(frameNum)}`;
+  return `https://res.cloudinary.com/${CLOUD_NAME}/image/upload/w_1280,q_auto,f_auto/${publicId}.jpg`;
 }
 // ======================================================
 
-// Text overlay definition for GSAP timeline
 interface TextItem {
   id: string;
   heading: string;
   subtext?: string;
-  inStart: number;   // scroll progress (0–1) when fade-in begins
-  inEnd: number;     // scroll progress when fully visible
-  outStart: number;  // when fade-out begins
-  outEnd: number;    // when fully hidden
+  inStart: number;
+  inEnd: number;
+  outStart: number;
+  outEnd: number;
 }
 
 const TEXT_ITEMS: TextItem[] = [
@@ -73,36 +77,65 @@ export default function HeroScroll() {
   const imagesRef = useRef<HTMLImageElement[]>([]);
   const [progress, setProgress] = useState(0);
   const [dimensions, setDimensions] = useState({ w: 0, h: 0 });
-  const loadedCountRef = useRef(0);
   const [loadPercent, setLoadPercent] = useState(0);
   const [ready, setReady] = useState(false);
   const rafRef = useRef<number>(0);
   const timelineRef = useRef<gsap.core.Timeline | null>(null);
 
-  // Preload all frames (unchanged)
+  // Initialize image array + preload first batch only
   useEffect(() => {
-    const imgs: HTMLImageElement[] = [];
     let mounted = true;
-    for (let i = 0; i < TOTAL_FRAMES; i++) {
-      const img = new Image();
+    const imgs: HTMLImageElement[] = Array.from({ length: TOTAL_FRAMES }, () => new Image());
+    imagesRef.current = imgs;
+
+    const initialBatch = Math.min(PRELOAD_AHEAD, TOTAL_FRAMES);
+    let initialLoaded = 0;
+
+    for (let i = 0; i < initialBatch; i++) {
+      const img = imgs[i];
       img.crossOrigin = "anonymous";
       img.src = frameSrc(i);
       img.onload = img.onerror = () => {
         if (!mounted) return;
-        loadedCountRef.current++;
-        const percent = Math.round((loadedCountRef.current / TOTAL_FRAMES) * 100);
-        setLoadPercent(percent);
-        if (loadedCountRef.current >= TOTAL_FRAMES) setReady(true);
+        initialLoaded++;
+        setLoadPercent(Math.round((initialLoaded / initialBatch) * 100));
+        if (initialLoaded >= initialBatch) setReady(true);
       };
-      imgs.push(img);
     }
-    imagesRef.current = imgs;
-    return () => {
-      mounted = false;
-    };
+
+    return () => { mounted = false; };
   }, []);
 
-  // Scroll progress (linear scrub) — used only for canvas drawing
+  // Sliding window — preload ahead + behind as user scrolls
+  useEffect(() => {
+    if (!ready) return;
+    const currentIdx = Math.min(
+      Math.floor(progress * (TOTAL_FRAMES - 1)),
+      TOTAL_FRAMES - 1
+    );
+
+    // Preload ahead
+    const end = Math.min(currentIdx + PRELOAD_AHEAD, TOTAL_FRAMES - 1);
+    for (let i = currentIdx; i <= end; i++) {
+      const img = imagesRef.current[i];
+      if (!img.src) {
+        img.crossOrigin = "anonymous";
+        img.src = frameSrc(i);
+      }
+    }
+
+    // Preload behind (for scroll-back)
+    const behind = Math.max(currentIdx - 10, 0);
+    for (let i = behind; i < currentIdx; i++) {
+      const img = imagesRef.current[i];
+      if (!img.src) {
+        img.crossOrigin = "anonymous";
+        img.src = frameSrc(i);
+      }
+    }
+  }, [progress, ready]);
+
+  // Scroll progress
   useEffect(() => {
     const onScroll = () => {
       if (!containerRef.current) return;
@@ -115,7 +148,7 @@ export default function HeroScroll() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Window dimensions (unchanged)
+  // Window dimensions
   useEffect(() => {
     const update = () =>
       setDimensions({ w: window.innerWidth, h: window.innerHeight });
@@ -124,7 +157,7 @@ export default function HeroScroll() {
     return () => window.removeEventListener("resize", update);
   }, []);
 
-  // Canvas scaling (unchanged)
+  // Canvas scaling
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -135,7 +168,7 @@ export default function HeroScroll() {
     if (ctx) ctx.scale(dpr, dpr);
   }, [dimensions]);
 
-  // Draw current frame (unchanged)
+  // Draw current frame — falls back to last loaded frame to prevent black flash
   const drawFrame = useCallback(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -152,20 +185,32 @@ export default function HeroScroll() {
     );
     const img = imagesRef.current[idx];
 
-    if (img && img.complete && img.naturalWidth > 0) {
-      ctx.clearRect(0, 0, dw, dh);
-      const scale = Math.max(dw / img.naturalWidth, dh / img.naturalHeight);
-      const sw = img.naturalWidth * scale;
-      const sh = img.naturalHeight * scale;
-      ctx.drawImage(img, (dw - sw) / 2, (dh - sh) / 2, sw, sh);
+    // If current frame isn't ready, walk backwards to find the last loaded one
+    let drawImg = img;
+    if (!img || !img.complete || img.naturalWidth === 0) {
+      for (let i = idx - 1; i >= 0; i--) {
+        const candidate = imagesRef.current[i];
+        if (candidate && candidate.complete && candidate.naturalWidth > 0) {
+          drawImg = candidate;
+          break;
+        }
+      }
     }
 
-    // Optional subtle vignette (unchanged)
+    if (drawImg && drawImg.complete && drawImg.naturalWidth > 0) {
+      ctx.clearRect(0, 0, dw, dh);
+      const scale = Math.max(dw / drawImg.naturalWidth, dh / drawImg.naturalHeight);
+      const sw = drawImg.naturalWidth * scale;
+      const sh = drawImg.naturalHeight * scale;
+      ctx.drawImage(drawImg, (dw - sw) / 2, (dh - sh) / 2, sw, sh);
+    }
+
+    // Subtle vignette
     ctx.fillStyle = "rgba(0,0,0,0.15)";
     ctx.fillRect(0, 0, dw, dh);
   }, [progress]);
 
-  // Render loop (unchanged)
+  // Render loop
   useEffect(() => {
     const loop = () => {
       drawFrame();
@@ -175,29 +220,21 @@ export default function HeroScroll() {
     return () => cancelAnimationFrame(rafRef.current);
   }, [drawFrame]);
 
-  // ==================== GSAP ScrollTrigger Timeline for Text Overlays ====================
+  // GSAP ScrollTrigger Timeline for Text Overlays
   useEffect(() => {
-    // Wait for container and text elements to be ready
     if (!containerRef.current || !textContainerRef.current || !ready) return;
 
-    // Kill old ScrollTriggers and timeline to avoid duplicates
     ScrollTrigger.getAll().forEach((st) => st.kill());
     if (timelineRef.current) timelineRef.current.kill();
 
-    // Create a master timeline that will be scrubbed by ScrollTrigger
-    const tl = gsap.timeline({
-      paused: true,
-    });
+    const tl = gsap.timeline({ paused: true });
 
-    // For each text item, build its animation sequence
     TEXT_ITEMS.forEach((item) => {
       const element = textRefs.current.get(item.id);
       if (!element) return;
 
-      // Set initial state (hidden, slightly down)
       gsap.set(element, { opacity: 0, y: 30, filter: "blur(8px)" });
 
-      // Fade in + move up + unblur
       tl.to(
         element,
         {
@@ -210,8 +247,6 @@ export default function HeroScroll() {
         item.inStart
       );
 
-      // Hold visible (do nothing between inEnd and outStart)
-      // Fade out + slight upward movement (optional)
       tl.to(
         element,
         {
@@ -227,42 +262,36 @@ export default function HeroScroll() {
 
     timelineRef.current = tl;
 
-    // Create ScrollTrigger to scrub the timeline based on scroll progress
     ScrollTrigger.create({
       trigger: containerRef.current,
       start: "top top",
       end: "bottom bottom",
-      scrub: 1.2, // smooth scrubbing with slight lag for cinematic feel
+      scrub: 1.2,
       onUpdate: (self) => {
-        // self.progress is 0–1 based on scroll position
         tl.progress(self.progress);
       },
     });
 
-    // Cleanup
     return () => {
       ScrollTrigger.getAll().forEach((st) => st.kill());
       if (timelineRef.current) timelineRef.current.kill();
     };
-  }, [ready, dimensions]); // re-run if dimensions change (text positioning remains centered)
+  }, [ready, dimensions]);
 
-  // Helper to set ref for text elements
   const setTextRef = (id: string) => (el: HTMLDivElement | null) => {
     if (el) textRefs.current.set(id, el);
     else textRefs.current.delete(id);
   };
 
   return (
-    <section ref={containerRef} className="relative h-[500vh]" id="hero">
+    <section ref={containerRef} className="relative h-[800vh]" id="hero">
       <div className="sticky top-0 h-screen w-full overflow-hidden">
-        {/* Canvas layer */}
         <canvas
           ref={canvasRef}
           className="absolute inset-0 h-full w-full"
           style={{ width: dimensions.w, height: dimensions.h }}
         />
 
-        {/* Text overlays layer (z-index above canvas) */}
         <div
           ref={textContainerRef}
           className="absolute inset-0 z-20 flex items-center justify-center px-6 pointer-events-none"
@@ -292,7 +321,6 @@ export default function HeroScroll() {
           ))}
         </div>
 
-        {/* Loading indicator (unchanged) */}
         {!ready && (
           <div className="absolute inset-0 z-30 flex flex-col items-center justify-center bg-[#050505]">
             <div className="relative h-px w-40 overflow-hidden bg-white/[0.06]">
@@ -307,7 +335,6 @@ export default function HeroScroll() {
           </div>
         )}
 
-        {/* Scroll hint (unchanged) */}
         {progress < 0.04 && ready && (
           <div className="absolute inset-x-0 bottom-12 z-10 flex flex-col items-center">
             <motion.div

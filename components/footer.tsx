@@ -124,7 +124,7 @@ From idea to launch — we turn vision into reality.
             ))}
           </div>
           <p className="text-[10px] font-medium tracking-[0.15em] text-white/20">
-            &copy; {new Date().getFullYear()} Armorray. All rights reserved. Powered by ZAPWMS.
+            &copy; {new Date().getFullYear()} ZapSolutions. All rights reserved. Powered by ZAPWMS.
           </p>
         </div>
       </div>

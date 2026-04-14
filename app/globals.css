@@ -91,12 +91,22 @@
   --color-sidebar-ring: var(--sidebar-ring);
 }
 
+* {
+  cursor: none !important;
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+@media (pointer: coarse) {
+  * {
+    cursor: auto !important;
   }
 }
 
