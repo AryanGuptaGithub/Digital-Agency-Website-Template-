@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import CustomCursor from "@/components/custom-cursor";
+import ScrollControls from "@/components/scroll-controls";
 import "./globals.css";
 
 const inter = Inter({
@@ -47,6 +48,7 @@ export default function RootLayout({
       >
         <CustomCursor />
         {children}
+        <ScrollControls />
         <Analytics />
       </body>
     </html>

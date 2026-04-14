@@ -15,7 +15,8 @@ import { techLogos } from "@/lib/logos";
 import MagicBento from '@/components/MagicBento'
 import FeaturesGrid from "@/components/features-grid";
 import ProjectShowcase from "@/components/project-showcase";
-
+import Testimonials from "@/components/testimonials";
+import SectionFadeTransition from "@/components/section-fade-transition";
 
 
 
@@ -69,7 +70,16 @@ export default function Home() {
          <FeaturesGrid />  
           {/* <HorizontalShowcase />  */}
          <ProjectShowcase />
-        <Globe />
+        {/* <Globe /> */}
+          <SectionFadeTransition 
+        fromSection="#work"        // adjust to actual id of your showcase section
+        toSection="#testimonials" 
+      />
+         <Testimonials />
+   <SectionFadeTransition 
+        fromSection="#testimonials" 
+        toSection="#contact" 
+      />
         <Charter />
       </main>
       <Footer />

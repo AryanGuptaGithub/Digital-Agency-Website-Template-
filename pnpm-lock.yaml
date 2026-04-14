@@ -10,7 +10,7 @@ importers:
     dependencies:
       '@appletosolutions/reactbits':
         specifier: ^1.0.3
-        version: 1.0.3(framer-motion@12.34.3(react-dom@19.2.4(react@19.2.4))(react@19.2.4))(gsap@3.14.2)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
+        version: 1.0.3(framer-motion@12.34.3(react-dom@19.2.4(react@19.2.4))(react@19.2.4))(gsap@3.14.2)(ogl@1.0.11)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(three@0.167.1)
       '@hookform/resolvers':
         specifier: ^3.9.1
         version: 3.10.0(react-hook-form@7.71.1(react@19.2.4))
@@ -146,6 +146,9 @@ importers:
       next-themes:
         specifier: ^0.4.6
         version: 0.4.6(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
+      ogl:
+        specifier: ^1.0.11
+        version: 1.0.11
       react:
         specifier: 19.2.4
         version: 19.2.4
@@ -173,6 +176,9 @@ importers:
       tailwind-merge:
         specifier: ^3.3.1
         version: 3.4.0
+      three:
+        specifier: ^0.167.1
+        version: 0.167.1
       vaul:
         specifier: ^1.1.2
         version: 1.1.2(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
@@ -1688,6 +1694,9 @@ packages:
     resolution: {integrity: sha512-rJgTQnkUnH1sFw8yT6VSU3zD3sWmu6sZhIseY8VX+GRu3P6F7Fu+JNDoXfklElbLJSnc3FUQHVe4cU5hj+BcUg==}
     engines: {node: '>=0.10.0'}
 
+  ogl@1.0.11:
+    resolution: {integrity: sha512-kUpC154AFfxi16pmZUK4jk3J+8zxwTWGPo03EoYA8QPbzikHoaC82n6pNTbd+oEaJonaE8aPWBlX7ad9zrqLsA==}
+
   picocolors@1.1.1:
     resolution: {integrity: sha512-xceH2snhtb5M9liqDsmEw56le376mTZkEX/jEb/RxNFyegNul7eNslCXP9FDj/Lcu0X8KEyMceP2ntpaHrDEVA==}
 
@@ -1840,6 +1849,9 @@ packages:
     resolution: {integrity: sha512-g9ljZiwki/LfxmQADO3dEY1CbpmXT5Hm2fJ+QaGKwSXUylMybePR7/67YW7jOrrvjEgL1Fmz5kzyAjWVWLlucg==}
     engines: {node: '>=6'}
 
+  three@0.167.1:
+    resolution: {integrity: sha512-gYTLJA/UQip6J/tJvl91YYqlZF47+D/kxiWrbTon35ZHlXEN0VOo+Qke2walF1/x92v55H6enomymg4Dak52kw==}
+
   tiny-invariant@1.3.3:
     resolution: {integrity: sha512-+FbBPE1o9QAYvviau/qC5SE3caw21q3xkvWKBtja5vgqOWIHHJ3ioaq1VPfn/Szqctz2bU/oYeKd9/z5BL+PVg==}
 
@@ -1904,7 +1916,7 @@ snapshots:
 
   '@alloc/quick-lru@5.2.0': {}
 
-  '@appletosolutions/reactbits@1.0.3(framer-motion@12.34.3(react-dom@19.2.4(react@19.2.4))(react@19.2.4))(gsap@3.14.2)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)':
+  '@appletosolutions/reactbits@1.0.3(framer-motion@12.34.3(react-dom@19.2.4(react@19.2.4))(react@19.2.4))(gsap@3.14.2)(ogl@1.0.11)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(three@0.167.1)':
     dependencies:
       react: 19.2.4
       react-dom: 19.2.4(react@19.2.4)
@@ -1912,6 +1924,8 @@ snapshots:
     optionalDependencies:
       framer-motion: 12.34.3(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
       gsap: 3.14.2
+      ogl: 1.0.11
+      three: 0.167.1
 
   '@babel/runtime@7.28.6': {}
 
@@ -3188,6 +3202,8 @@ snapshots:
 
   object-assign@4.1.1: {}
 
+  ogl@1.0.11: {}
+
   picocolors@1.1.1: {}
 
   postcss-value-parser@4.2.0: {}
@@ -3356,6 +3372,8 @@ snapshots:
   tailwindcss@4.2.0: {}
 
   tapable@2.3.0: {}
+
+  three@0.167.1: {}
 
   tiny-invariant@1.3.3: {}
 
