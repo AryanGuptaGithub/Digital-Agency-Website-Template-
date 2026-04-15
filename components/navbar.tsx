@@ -78,9 +78,9 @@ export default function Navbar() {
           <Link href="/" className="flex items-center">
             <img
               // src="https://www.zapsolutionz.com/ZAP%20WMS%20R.png"
-              src="https://res.cloudinary.com/dxwoomfzw/image/upload/v1776238306/Zap-Solutionz_new_zowejc.png"
+              src="https://res.cloudinary.com/dxwoomfzw/image/upload/v1776238986/Zap-Solutionz_2_ypw7bt.png"
               alt="Zap Logo"
-              className="h-10 w-auto"
+              className="h-15 w-auto"
             />
           </Link>
 
