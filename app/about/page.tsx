@@ -3,6 +3,7 @@
 import { useRef, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import ColorBends from "@/components/ColorBends";
+import Navbar from "@/components/navbar";
 
 // ==================== SECTIONS ====================
 interface Section {
@@ -109,6 +110,7 @@ export default function AboutPage() {
       className="relative bg-black"
       style={{ height: `${TOTAL_HEIGHT}vh` }}
     >
+        
       {/* Sticky fullscreen container */}
       <div className="sticky top-0 h-screen w-full overflow-hidden">
 
