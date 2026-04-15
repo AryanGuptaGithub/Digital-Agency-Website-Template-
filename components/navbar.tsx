@@ -77,7 +77,8 @@ export default function Navbar() {
         <div className="mx-auto flex max-w-[1400px] items-center justify-between px-6 py-4 lg:px-12">
           <Link href="/" className="flex items-center">
             <img
-              src="https://www.zapsolutionz.com/ZAP%20WMS%20R.png"
+              // src="https://www.zapsolutionz.com/ZAP%20WMS%20R.png"
+              src="https://res.cloudinary.com/dxwoomfzw/image/upload/v1776238306/Zap-Solutionz_new_zowejc.png"
               alt="Zap Logo"
               className="h-10 w-auto"
             />
