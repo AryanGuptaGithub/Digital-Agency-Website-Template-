@@ -114,23 +114,23 @@ export default function AboutPage() {
 
         {/* ColorBends Background */}
         <ColorBends
-          className="absolute inset-0 z-0"
-          colors={colorSets[activeIndex]}
-          rotation={90}
-          speed={0.2}
-          scale={1.2}
-          frequency={1}
-          warpStrength={1}
-          mouseInfluence={0.5}
-          noise={0.15}
-          parallax={0.5}
-          iterations={1}
-          intensity={1.5}
-          bandWidth={6}
-          transparent
-          autoRotate={0.3}
-          color="#A855F7"
-        />
+  className="absolute inset-0 z-0"
+  style={{}}
+  colors={colorSets[activeIndex] as never[]}
+  rotation={90}
+  speed={0.2}
+  scale={1.2}
+  frequency={1}
+  warpStrength={1}
+  mouseInfluence={0.5}
+  noise={0.15}
+  parallax={0.5}
+  iterations={1}
+  intensity={1.5}
+  bandWidth={6}
+  transparent
+  autoRotate={0.3}
+/>
 
         {/* Dark overlay */}
         <div className="absolute inset-0 z-10 bg-black/55" />
