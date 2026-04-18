@@ -1,6 +1,6 @@
 // app/page.tsx
 import SmoothScroll from "@/components/smooth-scroll";
-import Navbar from "@/components/navbar";
+// import Navbar from "@/components/navbar";
 import HeroScroll from "@/components/hero-scroll";
 import BrandStatement from "@/components/brand-statement";
 // import YachtMorph from "@/components/yacht-morph";
@@ -23,7 +23,7 @@ import SectionFadeTransition from "@/components/section-fade-transition";
 export default function Home() {
   return (
     <SmoothScroll>
-      <Navbar />
+      {/* <Navbar /> */}
       <main>
         <HeroScroll />
         <section className="bg-black py-20">

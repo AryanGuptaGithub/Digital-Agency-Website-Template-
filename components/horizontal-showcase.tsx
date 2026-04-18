@@ -211,7 +211,7 @@ export default function HorizontalShowcase() {
         <span className="text-[11px] font-semibold uppercase tracking-[0.5em] text-white/40">
           Featured Work
         </span>
-        <h2 className="mt-4 text-4xl font-bold tracking-tight text-white md:text-6xl">
+        <h2 className="mt-6 text-4xl font-bold tracking-tight text-white md:text-6xl">
           Projects we're proud of
         </h2>
       </div>

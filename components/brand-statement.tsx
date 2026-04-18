@@ -124,12 +124,17 @@ export default function BrandStatement() {
             >
               The Platform
             </motion.span>
-            <h2 className="max-w-3xl text-3xl font-bold leading-[1.05] tracking-tight text-white md:text-5xl lg:text-6xl">
-              <RevealText text="We Build Digital Experiences." delay={0.4} />
+            <h2 className="max-w-3xl text-2xl font-bold leading-[1.05] tracking-tight text-white md:text-5xl lg:text-6xl">
+              <RevealText text="We Build Digital Experience" delay={0.4} />
               <br />
-              <span className="text-white/40">
-                <RevealText text="Web. Mobile. AI Solutions for Modern Businesses." delay={0.8} />
+              <span className="text-white/40 text-md">
+                <RevealText text="Web, Mobile, AI Solutions." delay={0.8} />
               </span>
+              <br />
+              <span className="text-white/60 text-md">
+                <RevealText text="For Modern Businesses" delay={0.8} />
+              </span>
+              
             </h2>
           </div>
         </motion.div>

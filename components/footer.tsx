@@ -3,10 +3,11 @@
 import { motion } from "framer-motion";
 
 const NAV_LINKS = [
-  { label: "Home", href: "#hero" },
-  { label: "Services", href: "#features" },
-  { label: "Work", href: "#destinations" },
-  { label: "Contact", href: "#contact" },
+  { label: "Home", href: "/" },
+  {label: "About", href: "/about"},
+  { label: "Services", href: "/services/cloud" },
+  { label: "Work", href: "/work" },
+  { label: "Contact", href: "/#contact" },
 ];
 
 const SOCIAL_LINKS = [
@@ -105,7 +106,7 @@ From idea to launch — we turn vision into reality.
             <p className="text-sm leading-relaxed text-white/45">
               Web Development · Mobile Apps · UI/UX
               <br />
-              Full Stack · SaaS · AI Solutions
+              Full Stack · SaaS · AI Solutions · CRM 
             </p>
           </div>
         </div>

@@ -87,7 +87,7 @@ export default function TiltedCard({
         />
 
         {displayOverlayContent && overlayContent && (
-          <div className="absolute inset-0 z-10">{overlayContent}</div>
+          <div className="absolute inset-0 z-10 ">{overlayContent}</div>
         )}
 
         {captionText && (

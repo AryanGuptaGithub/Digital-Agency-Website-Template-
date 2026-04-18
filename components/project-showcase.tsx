@@ -307,7 +307,7 @@ export default function ProjectShowcase() {
         </h2>
       </div>
 
-      <div className="h-screen w-full overflow-hidden">
+      <div className="h-screen w-full overflow-hidden mt-10">
         <div
           ref={wrapperRef}
           className="flex h-full w-max flex-nowrap items-center"
@@ -330,7 +330,7 @@ export default function ProjectShowcase() {
                   displayOverlayContent={true}
                   overlayContent={
                     <div className="absolute inset-0 flex flex-col justify-end p-4 md:p-6 bg-gradient-to-t from-black/90 via-black/40 to-transparent">
-                      <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-1 border-2 p-4 flex justify-center align-center rounded-xl backdrop-blur-md">
+                      <h3 className="text-lg md:text-lg lg:text-lg font-bold text-white mb-1 border-2 p-4 flex justify-center align-center rounded-xl backdrop-blur-md">
                         {project.title}
                       </h3>
                       {project.stats && (

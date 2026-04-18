@@ -195,7 +195,7 @@ export default function Testimonials() {
               className="relative w-[85vw] max-w-[500px] flex-shrink-0 rounded-2xl border border-white/10 bg-gradient-to-br from-white/5 to-white/0 p-6 backdrop-blur-sm transition-all duration-500 hover:border-white/20 hover:bg-white/10 md:p-8 lg:p-10"
             >
               <div className="mb-6 text-6xl text-white/10">“</div>
-              <p className="text-base leading-relaxed text-white/80 md:text-lg">
+              <p className="text-base leading-relaxed text-white/80 md:text-small">
                 {item.quote}
               </p>
               <div className="mt-6">{renderStars(item.rating)}</div>
@@ -215,8 +215,8 @@ export default function Testimonials() {
                   </div>
                 )}
                 <div>
-                  <div className="font-semibold text-white">{item.author}</div>
-                  <div className="text-sm text-white/50">
+                  <div className="font-semibold text-sm text-white">{item.author}</div>
+                  <div className="text-sm text-white/50 text-xs">
                     {item.role}, {item.company}
                   </div>
                 </div>

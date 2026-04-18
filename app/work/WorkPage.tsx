@@ -259,14 +259,28 @@ const PROJECTS: Project[] = [
     ],
   },
   {
-    title: "Mannequin’s",
+    title: "Apexhide",
     category: "Web",
     tags: ["Web"],
     year: "2023",
     description:
-      "Mannequin’s Cosmetic India pampering since 1976. Mannequin’s Cosmetic India is an Indian company headquartered in Mumbai, Maharashtra, India.",
+      "APEX HIDE delivers premium luxury bags, backpacks, luggage, and accessories crafted for the discerning traveler and professional.",
     image:
-      "https://res.cloudinary.com/dxwoomfzw/image/upload/v1776248606/Mannequins_ubgdsn.png",
+      "https://res.cloudinary.com/dxwoomfzw/image/upload/v1776504974/Apexhide_bgwypj.png",
+    stats: [
+      { label: "Revenue Growth", value: "3×" },
+      { label: "SKUs", value: "80+" },
+    ],
+  },
+  {
+    title: "Arrmoray",
+    category: "CRM",
+    tags: ["CRM"],
+    year: "2023",
+    description:
+      "Next-generation radiology solutions providing cinematic precision and diagnostic excellence across the globe.",
+    image:
+      "https://res.cloudinary.com/dxwoomfzw/image/upload/v1776504974/Armorray_wkqyml.png",
     stats: [
       { label: "Revenue Growth", value: "3×" },
       { label: "SKUs", value: "80+" },

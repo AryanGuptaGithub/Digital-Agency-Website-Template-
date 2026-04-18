@@ -4,6 +4,7 @@ import { Analytics } from "@vercel/analytics/next";
 import CustomCursor from "@/components/custom-cursor";
 import ScrollControls from "@/components/scroll-controls";
 import "./globals.css";
+import Navbar from "@/components/navbar";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -47,6 +48,7 @@ export default function RootLayout({
         className={`${inter.variable} font-sans antialiased bg-[#050505] text-white`}
       >
         <CustomCursor />
+        <Navbar /> 
         {children}
         <ScrollControls />
         <Analytics />
